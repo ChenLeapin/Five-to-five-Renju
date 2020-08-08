@@ -111,7 +111,11 @@ int main()
 
 void displayBoard(void)
 {
-	system("cls"); //Clear screen. In Linux replace "cls" with "clear"
+	#if __linux__
+		system("clear"); //Clear screen.
+	#else
+		system("cls"); 
+	#endif
 	printf("\n");
 	memcpy(NowBoardArray, BlankBoardArray, sizeof(BlankBoardArray));
 	for (int i = 0; i < SIZE; i++)
